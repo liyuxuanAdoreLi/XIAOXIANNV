@@ -26,18 +26,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        Thread(Runnable {
-//            //在子线程发送一个消息。
-//            //此处让线程DownloadThread休眠5秒中，模拟文件的耗时过程
-//            try {
-//                Thread.sleep(5000)
-//                val msg = Message()
-//                msg.what = 1
-//                handler.sendMessage(msg)
-//            } catch (e: InterruptedException) {
-//                e.printStackTrace()
-//            }x
-//        }).start()
+
 
 
         im.setImageBitmap(getImageFromAssetFile(this,"pic1.jpg"))
