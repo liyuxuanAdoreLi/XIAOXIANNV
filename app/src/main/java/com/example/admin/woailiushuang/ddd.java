@@ -9,6 +9,4 @@ import android.os.Message;
 public class ddd extends Activity {
 
 
-
-
 }

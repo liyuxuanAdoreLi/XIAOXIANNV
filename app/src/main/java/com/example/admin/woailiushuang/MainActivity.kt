@@ -1,46 +1,49 @@
 package com.example.admin.woailiushuang
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.os.Handler
-import android.os.Message
 import android.support.v7.app.AppCompatActivity
-import android.view.View
+import android.util.Log
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
-
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 class MainActivity : AppCompatActivity() {
-
-    private val handler = object : Handler() {
-        override fun handleMessage(msg: Message) {
-            when (msg.what) {
-                1->{
-                }
-            }
-        }
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        EventBus.getDefault().register(this)
 
-
-
-        im.setImageBitmap(getImageFromAssetFile(this,"pic1.jpg"))
-
+        toB.setOnClickListener {
+            startActivity(Intent(this, SecondActivity::class.java))
+        }
     }
 
-    public fun getImageFromAssetFile(context: Context,fileName:String):Bitmap{
-
+    public fun getImageFromAssetFile(context: Context, fileName: String): Bitmap {
         val asm = context.resources.assets
-
         val input = asm.open(fileName)
-        var bitmap = BitmapFactory.decodeStream(input)
+        val bitmap = BitmapFactory.decodeStream(input)
         input.close()
 
         return bitmap
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onEventMainThread(event: MessageEvent) {
+        val msg = "onEventMainThread收到了消息：" + event.getMessage()
+        Log.d("EventBus", msg)
+        tv.setText(msg)
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        EventBus.getDefault().unregister(this)
     }
 }
