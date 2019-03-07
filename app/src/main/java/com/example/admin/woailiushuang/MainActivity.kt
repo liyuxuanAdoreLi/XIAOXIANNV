@@ -8,8 +8,9 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.Toast
+import com.example.admin.woailiushuang.consts.EventConsts
+import com.example.admin.woailiushuang.manager.EventManager
 import kotlinx.android.synthetic.main.activity_main.*
-import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
@@ -18,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        EventBus.getDefault().register(this)
+        EventManager.instnce.getEventBus().register(this)
 
         toB.setOnClickListener {
             startActivity(Intent(this, SecondActivity::class.java))
@@ -35,7 +36,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    fun onEventMainThread(event: MessageEvent) {
+    fun onEventMainThread(event: EventConsts.MessageEvent) {
         val msg = "onEventMainThread收到了消息：" + event.getMessage()
         Log.d("EventBus", msg)
         tv.setText(msg)
@@ -44,6 +45,22 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        EventBus.getDefault().unregister(this)
+        EventManager.instnce.getEventBus().unregister(this)
+    }
+
+    override fun onStart() {
+        super.onStart()
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+    }
+
+    override fun onResume() {
+        super.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
     }
 }

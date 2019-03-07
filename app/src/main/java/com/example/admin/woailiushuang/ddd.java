@@ -5,8 +5,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 
+import org.greenrobot.eventbus.EventBus;
 
-public class ddd extends Activity {
 
+public class ddd {
+
+int i = 0;
+    private  EventBus eventBus = EventBus.getDefault();
 
 }
