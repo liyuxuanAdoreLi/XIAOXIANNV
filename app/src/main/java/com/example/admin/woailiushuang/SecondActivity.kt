@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.example.admin.woailiushuang.consts.EventConsts
+import com.example.admin.woailiushuang.manager.EventManager
 import kotlinx.android.synthetic.main.activity_b.*
 import org.greenrobot.eventbus.EventBus
 
@@ -20,7 +21,7 @@ class SecondActivity: AppCompatActivity() {
         setContentView(R.layout.activity_b)
 
         toA.setOnClickListener {
-            EventBus.getDefault().post(EventConsts.MessageEvent("first Btn clicked"))
+            EventManager.instnce.post(EventConsts.MessageEvent("first Btn clicked"))
         }
     }
 }

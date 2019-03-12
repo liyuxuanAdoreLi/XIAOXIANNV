@@ -2,6 +2,7 @@ package com.example.admin.woailiushuang.manager
 
 import com.example.admin.woailiushuang.consts.EventConsts
 import org.greenrobot.eventbus.EventBus
+import java.util.*
 
 /**
  * @desc
@@ -13,27 +14,14 @@ class EventManager private constructor(){
 
     private var eventBus = EventBus.getDefault()
 
-
-//    fun GetInstance(): EventManager {
-////        if (instance == null) {
-////            synchronized(EventManager::class.java) {
-////                if (instance == null) {
-////                    instance = EventManager()
-////                }
-////            }
-////        }
-////        return instance
-////    }
-
     companion object {
         val instnce:EventManager by lazy { EventManager() }
     }
-
     fun getEventBus(): EventBus {
         return eventBus
     }
 
-    fun post(event: EventConsts.BaseEvent) {
+    fun post(event: EventConsts.BaseEvent<out Any>) {
         eventBus.post(event)
     }
 }

@@ -36,8 +36,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    fun onEventMainThread(event: EventConsts.MessageEvent) {
-        val msg = "onEventMainThread收到了消息：" + event.getMessage()
+    fun onEventMainThad(event: EventConsts.MessageEvent) {
+        val msg = "onEventMainThread收到了消息：" + event.data
         Log.d("EventBus", msg)
         tv.setText(msg)
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show()

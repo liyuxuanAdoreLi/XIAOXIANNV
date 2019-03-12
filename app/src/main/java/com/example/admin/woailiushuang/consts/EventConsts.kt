@@ -1,5 +1,7 @@
 package com.example.admin.woailiushuang.consts
 
+import java.util.*
+
 /**
  * @desc
  *
@@ -8,18 +10,20 @@ package com.example.admin.woailiushuang.consts
  */
 class EventConsts {
 
-        open class MessageEvent(str: String) : BaseEvent() {
-            private var str = str
-            fun getMessage() = str
+    open class MessageEvent  constructor(data : String? = null) : BaseEvent<String>(data)
+
+
+    open class BaseEvent<Data> @JvmOverloads  constructor(date: Data? = null) {
+        var data:Data? =null
+        init {
+            this.data = date
         }
+    }
 
-
-    open class BaseEvent constructor() {
-//        companion object {
-//             lateinit  var mydata:T
-//        }
-
-
+    companion object {
+        fun test(){
+            MessageEvent().data =""
+        }
     }
 
 }
