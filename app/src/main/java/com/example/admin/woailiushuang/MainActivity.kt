@@ -24,6 +24,10 @@ class MainActivity : AppCompatActivity() {
         toB.setOnClickListener {
             startActivity(Intent(this, SecondActivity::class.java))
         }
+
+        toRecycleView.setOnClickListener {
+            startActivity(Intent(this, RecycleVDemoActivity::class.java))
+        }
     }
 
     public fun getImageFromAssetFile(context: Context, fileName: String): Bitmap {

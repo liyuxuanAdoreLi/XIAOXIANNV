@@ -10,11 +10,17 @@
         <LinearLayout
             android:layout_gravity="center"
             android:gravity="center"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <Button
-                android:text="跳转"
+                android:text="EventBus实例跳转"
                 android:id="@+id/toB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                android:text="RecycleView实例跳转"
+                android:id="@+id/toRecycleView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
