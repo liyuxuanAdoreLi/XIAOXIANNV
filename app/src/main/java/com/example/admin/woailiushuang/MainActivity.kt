@@ -38,7 +38,8 @@ class MainActivity : AppCompatActivity() {
 
         return bitmap
     }
-
+        //注解作用：标记：将来该方法都将被eventBus收录
+//    threadMode 一个枚举：代表着EventBus 通过post发送消息时，接受的线程类型是主线程还是子线程
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onEventMainThad(event: EventConsts.MessageEvent) {
         val msg = "onEventMainThread收到了消息：" + event.data

@@ -8,7 +8,8 @@ package com.example.admin.woailiushuang
  */
 class Data(
         val content:String?,
-        val title:String?
+        val title:String?,
+val status:Boolean
 
 ) {
 
