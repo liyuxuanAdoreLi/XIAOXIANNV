@@ -2,7 +2,7 @@ package com.example.admin.woailiushuang
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.example.admin.woailiushuang.consts.EventConsts
 import com.example.admin.woailiushuang.manager.EventManager
 import kotlinx.android.synthetic.main.activity_b.*
@@ -18,10 +18,12 @@ import org.greenrobot.eventbus.EventBus
 class SecondActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_b)
+        setContentView(R.layout.swipcard_demo)
 
-        toA.setOnClickListener {
-            EventManager.instnce.post(EventConsts.MessageEvent("first Btn clicked"))
-        }
+//        toA.setOnClickListener {
+//            EventManager.instnce.post(EventConsts.MessageEvent("first Btn clicked"))
+//        }
+
+
     }
 }

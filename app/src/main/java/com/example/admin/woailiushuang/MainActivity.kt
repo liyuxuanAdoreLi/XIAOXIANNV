@@ -5,9 +5,10 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.admin.woailiushuang.consts.EventConsts
 import com.example.admin.woailiushuang.manager.EventManager
 import kotlinx.android.synthetic.main.activity_main.*
@@ -21,12 +22,19 @@ class MainActivity : AppCompatActivity() {
 
         EventManager.instnce.getEventBus().register(this)
 
+        onClickAction()
+    }
+
+    public fun onClickAction(){
         toB.setOnClickListener {
             startActivity(Intent(this, SecondActivity::class.java))
         }
-
         toRecycleView.setOnClickListener {
             startActivity(Intent(this, RecycleVDemoActivity::class.java))
+        }
+        scroll.setOnClickListener {
+//            tv.translationX +=  10.0f
+
         }
     }
 

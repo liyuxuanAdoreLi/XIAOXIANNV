@@ -1,8 +1,8 @@
 package com.example.admin.woailiushuang
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.RecyclerView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
 
 import com.example.admin.woailiushuang.RecycleViewDemoActivity.RvAdapter
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
@@ -24,13 +24,13 @@ class JavaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recycle_demo)
 
-        val recyclerView = findViewById<RecyclerView>(R.id.myRecycleView)
+//        val recyclerView = findViewById<RecyclerView>(R.id.myRecycleView)
         val refreshLayout = findViewById<SmartRefreshLayout>(R.id.refreshLayout)
         initData()
         val adapter = RvAdapter(this, list)
 
 
-        recyclerView.adapter = adapter
+//        recyclerView.adapter = adapter
 
         refreshLayout.setOnRefreshListener { refreshLayout ->
             refreshLayout.finishRefresh(2000/*,false*/)//传入false表示刷新失败
