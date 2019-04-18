@@ -5,7 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @desc
+ * @desc 自定义一个eventbus试试
+ *
  * @auth ${user}
  * @time 2019/3/26 12:02
  */

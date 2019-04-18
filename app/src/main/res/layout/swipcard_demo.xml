@@ -58,7 +58,7 @@
 
         <!--</com.example.admin.woailiushuang.SwipCards.SwipCards>-->
 
-        <com.example.admin.woailiushuang.SwipCards.BarChartView
+        <com.example.admin.woailiushuang.DiyView.BarChartView
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

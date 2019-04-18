@@ -1,4 +1,4 @@
-package com.example.admin.woailiushuang.SwipCards;
+package com.example.admin.woailiushuang.DiyView;
 
 import android.content.Context;
 import android.graphics.Canvas;
