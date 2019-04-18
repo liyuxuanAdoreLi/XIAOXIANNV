@@ -8,6 +8,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.util.TypedValue;
+import android.view.MotionEvent;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ public class BarChartView extends View {
     int mGap;
     int mSelectedIndex=-1;
     private boolean enableGrowAnimation = true;
+    int BAR_GROW_STEP;
 
     Paint mAxisPaint;
     Paint mBarPaint;
@@ -59,9 +61,11 @@ public class BarChartView extends View {
         mTextRect = new Rect();
         mTemp = new RectF();
         //柱状条宽度 默认8dp
-        mBarWidth = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, getResources().getDisplayMetrics());
+        mBarWidth = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 18, getResources().getDisplayMetrics());
         //柱状条与坐标文本之间的间隔大小，默认8dp
         mGap = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, getResources().getDisplayMetrics());
+
+        BAR_GROW_STEP = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, getResources().getDisplayMetrics());
     }
 
 
@@ -85,6 +89,11 @@ public class BarChartView extends View {
 
         float value;
         float transformedValue;
+
+        public boolean isInside(float x,float y){
+            return x>left&&x<right&&y<bottom&&y>top;
+        }
+
     }
 
     @Override
@@ -98,13 +107,12 @@ public class BarChartView extends View {
         //步长
         int step = width/mHorizontalAxis.length;
         //mRadius
-        mRadius = (int)mRadius/2;
+        mRadius = (int)mBarWidth/2;
         //barleft,后续叠加计算
         int barleft = getPaddingLeft()+step/2-mRadius;
 
         mAxisPaint.getTextBounds(mHorizontalAxis[0],0,mHorizontalAxis[0].length(),mTextRect);
 
-        Rect t = mTextRect;
         //柱状图高度
         int maxBarHeight = height - mTextRect.height() - mGap;
         //计算柱状条最大像素与最大数据值的比值
@@ -117,6 +125,7 @@ public class BarChartView extends View {
             //计算四个位置
             bar.left = barleft;
             bar.top = (int)(getPaddingTop()+height-bar.transformedValue);
+            bar.right = (int) (barleft+mBarWidth);
             bar.bottom = getPaddingTop()+maxBarHeight;
 
             //记录当前top
@@ -131,8 +140,12 @@ public class BarChartView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
 
-        drawBars(canvas);
+        if (enableGrowAnimation){
+            drawBarswidthAnimation(canvas);
 
+        }else {
+            drawBars(canvas);
+        }
     }
 
     private void drawBars(Canvas canvas){
@@ -146,8 +159,78 @@ public class BarChartView extends View {
             //绘制坐标文本
             canvas.drawText(s,textX,textY,mAxisPaint);
             mTemp.set(bar.left,bar.top,bar.right,bar.bottom);
+
+            if (mSelectedIndex==i){
+                mBarPaint.setColor(Color.RED);
+                canvas.drawText(String.valueOf(bar.value),textX,bar.top-mGap,mAxisPaint);
+            }else {
+                mBarPaint.setColor(Color.BLUE);
+            }
+
+            canvas.drawRoundRect(mTemp,mRadius,mRadius,mBarPaint);
+
+        }
+
+    }
+    private void drawBarswidthAnimation(Canvas canvas){
+        int count = 0;//计数，计算已经绘制完成的bar的数量
+        for (int i=0;i<mBars.size();i++){//循环五次每次绘制的高度是等高除非已经到达本bar的value
+            Bar bar = mBars.get(i);
+            String s=mHorizontalAxis[i];
+            //textx 为柱状条中线位置
+            float textX = bar.left+mRadius;
+            float textY = getHeight() - getPaddingBottom();
+            //绘制坐标文本
+            canvas.drawText(s,textX,textY,mAxisPaint);
+
+            bar.currentTop -= BAR_GROW_STEP;
+
+            if (bar.currentTop<bar.top){
+                bar.currentTop = bar.top;
+                count++;
+                if (count>=mBars.size()||bar.currentTop==getPaddingTop()){
+                    enableGrowAnimation = false;
+                }
+            }
+
+            mTemp.set(bar.left,bar.currentTop,bar.right,bar.bottom);
             canvas.drawRoundRect(mTemp,mRadius,mRadius,mBarPaint);
         }
 
+        if (enableGrowAnimation){
+            //每调用一次则绘制一次draw，postdelayed是在其他线程延迟调用
+            postInvalidateDelayed(70);
+        }
+
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (enableGrowAnimation){
+            return false;
+        }
+        switch (event.getActionMasked()){
+            case MotionEvent.ACTION_DOWN:
+                //遍历所有bar
+                for (int i=0;i<mBars.size();i++){
+                    //如果在某个bar里面
+                    if (mBars.get(i).isInside(event.getX(),event.getY())){
+                        //重新绘制本bar
+                        mSelectedIndex = i;
+                        invalidate();
+                            break;
+                    }
+                }
+                break;
+
+            case MotionEvent.ACTION_UP:
+                if (mSelectedIndex>=0){
+                    mSelectedIndex = -1;
+                    invalidate();
+                }
+                break;
+        }
+
+        return true;
     }
 }
