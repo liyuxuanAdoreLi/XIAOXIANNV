@@ -9,7 +9,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class TestMainHttpActivity extends AppCompatActivity {
-    private final String url = "https://v.juhe.cn/historyWeather/citys?province_id=2&key=bb52107206585ab074f5e59a8c73875b";
+//    private final String url = "https://v.juhe.cn/historyWeather/citys?province_id=2&key=bb52107206585ab074f5e59a8c73875b";
+    private final String url = "https://v.xxxjuhe.cn/historyWeather/citys?province_id=2&key=bb52107206585ab074f5e59a8c73875b";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

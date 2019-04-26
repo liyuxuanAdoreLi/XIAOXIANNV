@@ -1,9 +1,11 @@
 package com.example.admin.woailiushuang.http;
 
 import android.text.format.Time;
+import android.util.Log;
 import android.util.TimeUtils;
 
 import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.DelayQueue;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.RejectedExecutionHandler;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -32,8 +34,45 @@ public class ThreadPoolManager {
         });
 
         threadPoolExecutor.execute(corethread);
+        threadPoolExecutor.execute(delayThread);
+    }
+
+
+    //创建一个延迟队列
+    private DelayQueue<HttpTask> delayQueue = new DelayQueue<>();
+    //添加延迟任务
+    public void addDelayTask(HttpTask   task){
+        if (task!=null){
+            task.setDelayTime(3000);
+            delayQueue.offer(task);
+        }
+
 
     }
+    //延迟runnable
+    private Runnable delayThread = new Runnable() {
+        HttpTask ht;
+        @Override
+        public void run() {
+            while (true){
+                try {
+                    ht = delayQueue.take();
+                    if (ht.getDelayCount()<3){
+                        threadPoolExecutor.execute(ht);
+                        ht.setDelayCount(ht.getDelayCount()+1);
+                        Log.e("===重试机制===",ht.getDelayCount()+" "+System.currentTimeMillis());
+                    }else {
+                        Log.e("===重试机制===","执行失败！！！！！");
+                    }
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    };
+
+
 
     //核心线程 "叫号"  也可以加进线程池
     private Runnable corethread = new Runnable() {

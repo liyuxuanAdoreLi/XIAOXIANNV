@@ -60,16 +60,12 @@ public class JsonHttpRequest implements IHttpRequest {
 
                 listener.onSuccess(im);
             }else {
-        // trow runTimeException
+                throw new RuntimeException("请求失败");
             }
-
-
-
-
-        } catch (MalformedURLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException("请求失败");
+
         }finally {
             httpURLConnection.disconnect();
         }
