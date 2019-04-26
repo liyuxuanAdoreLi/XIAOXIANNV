@@ -29,9 +29,10 @@ class VidewDemoActivity:AppCompatActivity() {
 
         mediaPlayer = MediaPlayer()
 
-        var aFD : AssetFileDescriptor= assets.openFd("demo.mp3")
+        var aFD : AssetFileDescriptor= assets.openFd("susong.mp3")
 
         mediaPlayer!!.setDataSource(aFD.fileDescriptor,aFD.startOffset,aFD.length)
+        mediaPlayer!!.prepare()
 
         btn.setOnClickListener {
             mediaPlayer!!.start()
