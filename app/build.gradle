@@ -36,21 +36,17 @@ dependencies {
     implementation 'org.greenrobot:eventbus:3.1.1'
     //recycleView
     implementation 'com.android.support:recyclerview-v7:28.0.0'
-
     //1.1.0 API改动过大，老用户升级需谨慎
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-21'
-    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-21'//没有使用特殊Header，可以不加这行
-
-////1.1.0 androidx 版本
-//    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-andx-4'
-//    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-andx-4'
-//    implementation 'com.android.support:design:28.0.0'//版本随意（非必须，引用可以解决无法预览问题）
-
-
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-21'
+    //没有使用特殊Header，可以不加这行
+    ////1.1.0 androidx 版本
+    //    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-andx-4'
+    //    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-andx-4'
+    //    implementation 'com.android.support:design:28.0.0'//版本随意（非必须，引用可以解决无法预览问题）
     //json
-
     implementation 'com.alibaba:fastjson:1.2.32'
-
-//1.0.5 当1.1.0出现问题可以回退到1.0.5.1
+    //1.0.5 当1.1.0出现问题可以回退到1.0.5.1
     //CardView
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.1'
 }

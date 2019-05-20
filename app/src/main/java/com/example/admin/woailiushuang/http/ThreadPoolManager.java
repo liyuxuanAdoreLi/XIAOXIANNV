@@ -59,8 +59,8 @@ public class ThreadPoolManager {
                     ht = delayQueue.take();
                     if (ht.getDelayCount()<3){
                         threadPoolExecutor.execute(ht);
-                        ht.setDelayCount(ht.getDelayCount()+1);
                         Log.e("===重试机制===",ht.getDelayCount()+" "+System.currentTimeMillis());
+                        ht.setDelayCount(ht.getDelayCount()+1);
                     }else {
                         Log.e("===重试机制===","执行失败！！！！！");
                     }
