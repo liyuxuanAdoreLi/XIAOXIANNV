@@ -26,7 +26,8 @@ public class ThreadPoolManager {
     public ThreadPoolManager() {
 
         //创建线程池
-        threadPoolExecutor = new ThreadPoolExecutor(3, 10, 15, TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(4), new RejectedExecutionHandler() {
+        threadPoolExecutor = new ThreadPoolExecutor(3, 10, 15,
+                TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(4), new RejectedExecutionHandler() {
             @Override//如果出错直接吧runnable交给队列吧
             public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
                 addTask(r);
