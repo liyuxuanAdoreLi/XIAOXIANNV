@@ -18,7 +18,7 @@ import java.util.ArrayList
  */
 class JavaActivity : AppCompatActivity() {
 
-    internal var list: MutableList<Data> = ArrayList()
+    internal var list: MutableList<Question> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +27,7 @@ class JavaActivity : AppCompatActivity() {
 //        val recyclerView = findViewById<RecyclerView>(R.id.myRecycleView)
         val refreshLayout = findViewById<SmartRefreshLayout>(R.id.refreshLayout)
         initData()
-        val adapter = RvAdapter(this, list)
+//        val adapter = RvAdapter(this, list as List<Question>)
 
 
 //        recyclerView.adapter = adapter
@@ -39,15 +39,15 @@ class JavaActivity : AppCompatActivity() {
     }
 
     internal fun initData() {
-        list.add(Data("fjdsojfo", "fdsohf", true))
-        list.add(Data("gfds", "gfdsg", false))
-        list.add(Data("hh", "hhh", true))
-        list.add(Data("hhh", "erre", false))
-        list.add(Data("gfds", "gfdsg", false))
-        list.add(Data("hh", "hhh", true))
-
-        list.add(Data("hhh", "erre", false))
-        list.add(Data("gfds", "gfdsg", false))
+//        list.add(Data("fjdsojfo", "fdsohf", true))
+//        list.add(Data("gfds", "gfdsg", false))
+//        list.add(Data("hh", "hhh", true))
+//        list.add(Data("hhh", "erre", false))
+//        list.add(Data("gfds", "gfdsg", false))
+//        list.add(Data("hh", "hhh", true))
+//
+//        list.add(Data("hhh", "erre", false))
+//        list.add(Data("gfds", "gfdsg", false))
     }
 
 

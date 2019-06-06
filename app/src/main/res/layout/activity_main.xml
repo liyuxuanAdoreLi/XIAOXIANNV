@@ -13,6 +13,10 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="100dp"
+                android:layout_height="100dp" />
             <Button
                 android:text="EventBus实例跳转"
                 android:id="@+id/toB"
@@ -31,6 +35,11 @@
             <Button
                 android:text="协程"
                 android:id="@+id/xiecheng"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                android:text="驾照"
+                android:id="@+id/jiazhao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>

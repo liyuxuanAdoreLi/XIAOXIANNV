@@ -10,37 +10,43 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.admin.woailiushuang.consts.EventConsts
 import com.example.admin.woailiushuang.coroutine.test
+import com.example.admin.woailiushuang.http.HttpUtils
 import com.example.admin.woailiushuang.manager.EventManager
 import kotlinx.android.synthetic.main.activity_main.*
+import okhttp3.*
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
+import java.io.IOException
+
 
 class MainActivity : AppCompatActivity() {
+    val url = "http://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1559641157130&di=3b5645543641dd1c81390df2e1c99bd9&imgtype=0&src=http%3A%2F%2Fwww.wfjianmei.com%2Fupload_files%2Ftk19822577.jpg"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//
         EventManager.instnce.getEventBus().register(this)
         initView()
-//
-//        onClickAction()
-//        postItem(Item())
-//        this.main1()
-//        this.main2()
-//        this.main3()
-//        this.main4()
-//        this.main5()
-//        this.main6()
 
-//            Log.i("协程---主线程去你妈的，怎么一直是我最后执行", "协程" + System.currentTimeMillis())//-----1
-
+        HttpUtils.instnce.getImageFromUrl(url,{
+            runOnUiThread {
+                setbmpToImage(it)
+            }
+        })
 
 
     }
 
+    interface CallBk{
+        fun onFaliel(e:IOException)
+        fun onSuccess(list: List<Question>?)
+    }
+
+    fun setbmpToImage(bmp :Bitmap){
+        image.setImageBitmap(bmp)
+    }
 
 
-    public fun initView() {
+    fun initView() {
         toB.setOnClickListener {
             startActivity(Intent(this, SecondActivity::class.java))
         }
@@ -48,8 +54,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, RecycleVDemoActivity::class.java))
         }
         scroll.setOnClickListener {
-                        tv.translationX +=  10.0f
-
+            tv.translationX +=  10.0f
         }
         xiecheng.setOnClickListener {
             startActivity(Intent(this, test::class.java))
@@ -65,8 +70,9 @@ class MainActivity : AppCompatActivity() {
         return bitmap
     }
 
-    //注解作用：标记：将来该方法都将被eventBus收录
-//    threadMode 一个枚举：代表着EventBus 通过post发送消息时，接受的线程类型是主线程还是子线程
+    /*注解作用：标记：将来该方法都将被eventBus收录
+      threadMode 一个枚举：代表着EventBus 通过post发送消息时，
+      接受的线程类型是主线程还是子线程*/
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onEventMainThad(event: EventConsts.MessageEvent) {
         val msg = "onEventMainThread收到了消息：" + event.data
