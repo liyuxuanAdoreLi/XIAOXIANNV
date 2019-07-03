@@ -42,6 +42,11 @@
                 android:id="@+id/jiazhao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+            <Button
+                android:text="自己封装的图片框架测试"
+                android:id="@+id/imageTest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <TextView

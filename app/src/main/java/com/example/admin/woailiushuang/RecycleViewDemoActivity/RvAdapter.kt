@@ -1,12 +1,15 @@
 package com.example.admin.woailiushuang.RecycleViewDemoActivity
 
 import android.content.Context
+import android.os.Handler
+import android.os.Message
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.admin.woailiushuang.Data
 import com.example.admin.woailiushuang.Question
 import com.example.admin.woailiushuang.R
@@ -22,7 +25,11 @@ import kotlinx.coroutines.launch
  * @time 2019/3/13 18:43
  */
 class RvAdapter : RecyclerView.Adapter<RvAdapter.MyViewHolder> {
+
+
+
     private var list: MutableList<Question>? = null
+
     private var context:Context?=null
 
     constructor(mContext: Context, list: MutableList<Question>) {
@@ -30,7 +37,17 @@ class RvAdapter : RecyclerView.Adapter<RvAdapter.MyViewHolder> {
         this.list = list
     }
 
-    override fun getItemCount(): Int = list?.size!!
+//    override fun onBindViewHolder(holder: MyViewHolder, position: Int, payloads: MutableList<Any>) {
+//        super.onBindViewHolder(holder, position, payloads)
+//    }
+
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
+    }
+
+    override fun getItemCount(): Int {
+       return list!!.count()
+    }
 
     override fun onBindViewHolder(holder:MyViewHolder, position: Int) {
         holder.itemA.text = list!![position]!!.item1
@@ -41,15 +58,14 @@ class RvAdapter : RecyclerView.Adapter<RvAdapter.MyViewHolder> {
 
         holder.exp.text = list!![position]!!.explains
 
-        HttpUtils.instnce.getImageFromUrl(list!![position]!!.url!!,{
-                holder.img.setImageBitmap(it)
-        })
-
+        if (!list!![position]!!.url.isNullOrBlank()){
+            Glide.with(context).load(list!![position]!!.url!!).crossFade().into(holder.img)
+        }
 
     }
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): MyViewHolder {
-        val view= LayoutInflater.from(context).inflate(R.layout.item_recy_demo,p0)
+        val view= LayoutInflater.from(context).inflate(R.layout.item_recy_demo,p0,false)
         return MyViewHolder(view)
     }
 
@@ -62,6 +78,11 @@ class RvAdapter : RecyclerView.Adapter<RvAdapter.MyViewHolder> {
 
         val exp = itemView.findViewById<TextView>(R.id.exp)
         val img = itemView.findViewById<ImageView>(R.id.img)
+
+
+
     }
+
+
 }
 

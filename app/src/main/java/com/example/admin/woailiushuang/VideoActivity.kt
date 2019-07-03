@@ -11,6 +11,8 @@ import kotlinx.android.synthetic.main.video_activity.*
 import kotlinx.android.synthetic.main.video_activity.view.*
 
 class VideoActivity : AppCompatActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.video_activity)
@@ -33,7 +35,7 @@ class VideoActivity : AppCompatActivity() {
         }
 
         stop.setOnClickListener {
-            videoView.stop
+            videoView.stopPlayback()
         }
 
         pause.setOnClickListener {

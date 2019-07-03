@@ -29,6 +29,7 @@
         <activity android:name=".VideoActivity" />
         <activity android:name=".http.TestMainHttpActivity" />
         <activity android:name=".coroutine.test" />
+        <activity android:name=".image.TestActivity" />
     </application>
 
 </manifest>

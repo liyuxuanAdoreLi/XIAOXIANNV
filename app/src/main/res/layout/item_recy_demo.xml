@@ -1,75 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="30dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:padding="30dp">
 
     <ImageView
         android:id="@+id/img"
         android:layout_width="match_parent"
-        android:layout_height="200dp" />
+        android:layout_height="200dp"
+        tools:ignore="MissingConstraints" />
 
     <TextView
-        app:layout_constraintTop_toBottomOf="@id/img"
         android:id="@+id/itemTitle"
-        android:text="问题"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:text="问题"
+        app:layout_constraintTop_toBottomOf="@id/img" />
 
     <TextView
         android:id="@+id/itemA"
-        app:layout_constraintTop_toBottomOf="@id/itemTitle"
-        android:text="测试item内容"
-        android:background="@color/wight"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/wight"
+        android:gravity="center"
+        android:text="测试item内容"
+        app:layout_constraintTop_toBottomOf="@id/itemTitle" />
+
     <TextView
         android:id="@+id/itemB"
-        app:layout_constraintTop_toBottomOf="@id/itemA"
-        android:text="测试item内容"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:background="@color/wight"
         android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:text="测试item内容"
+        app:layout_constraintTop_toBottomOf="@id/itemA" />
+
     <TextView
         android:id="@+id/itemC"
-        app:layout_constraintTop_toBottomOf="@id/itemB"
-        android:text="测试item内容"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:background="@color/wight"
         android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:text="测试item内容"
+        app:layout_constraintTop_toBottomOf="@id/itemB" />
+
     <TextView
         android:id="@+id/itemD"
-        app:layout_constraintTop_toBottomOf="@id/itemC"
-        android:text="测试item内容"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:background="@color/wight"
         android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
+        android:text="测试item内容"
+        app:layout_constraintTop_toBottomOf="@id/itemC" />
 
 
     <TextView
         android:id="@+id/exp"
-        app:layout_constraintTop_toBottomOf="@id/itemD"
-        android:text="测试item内容"
-        android:textSize="10sp"
-        android:background="@color/wight"
-        android:textColor="@color/colorAccent"
-        android:gravity="center"
-        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@color/wight"
+        android:gravity="center"
+        android:text="测试item内容"
+        android:textColor="@color/colorAccent"
+        android:textSize="10sp"
+        app:layout_constraintTop_toBottomOf="@id/itemD" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

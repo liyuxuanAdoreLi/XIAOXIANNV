@@ -24,31 +24,7 @@ class JavaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recycle_demo)
 
-//        val recyclerView = findViewById<RecyclerView>(R.id.myRecycleView)
-        val refreshLayout = findViewById<SmartRefreshLayout>(R.id.refreshLayout)
-        initData()
-//        val adapter = RvAdapter(this, list as List<Question>)
-
-
-//        recyclerView.adapter = adapter
-
-        refreshLayout.setOnRefreshListener { refreshLayout ->
-            refreshLayout.finishRefresh(2000/*,false*/)//传入false表示刷新失败
-        }
 
     }
-
-    internal fun initData() {
-//        list.add(Data("fjdsojfo", "fdsohf", true))
-//        list.add(Data("gfds", "gfdsg", false))
-//        list.add(Data("hh", "hhh", true))
-//        list.add(Data("hhh", "erre", false))
-//        list.add(Data("gfds", "gfdsg", false))
-//        list.add(Data("hh", "hhh", true))
-//
-//        list.add(Data("hhh", "erre", false))
-//        list.add(Data("gfds", "gfdsg", false))
-    }
-
 
 }

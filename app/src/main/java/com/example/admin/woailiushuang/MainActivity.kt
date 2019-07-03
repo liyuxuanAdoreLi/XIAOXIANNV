@@ -9,8 +9,11 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.admin.woailiushuang.consts.EventConsts
+import com.example.admin.woailiushuang.consts.Subscripe
+import com.example.admin.woailiushuang.consts.ThMode
 import com.example.admin.woailiushuang.coroutine.test
 import com.example.admin.woailiushuang.http.HttpUtils
+import com.example.admin.woailiushuang.image.TestActivity
 import com.example.admin.woailiushuang.manager.EventManager
 import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.*
@@ -59,6 +62,9 @@ class MainActivity : AppCompatActivity() {
         xiecheng.setOnClickListener {
             startActivity(Intent(this, test::class.java))
         }
+        imageTest.setOnClickListener {
+            startActivity(Intent(this, TestActivity::class.java))
+        }
     }
 
     fun getImageFromAssetFile(context: Context, fileName: String): Bitmap {
@@ -79,6 +85,11 @@ class MainActivity : AppCompatActivity() {
         Log.d("EventBus", msg)
         tv.setText(msg)
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+    }
+
+    @Subscripe(threadMode = ThMode.MAIN)
+    fun onEventMainTHad(eventConsts: EventConsts){
+
     }
 
     override fun onDestroy() {
