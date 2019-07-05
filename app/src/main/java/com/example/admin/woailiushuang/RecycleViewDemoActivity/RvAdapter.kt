@@ -1,8 +1,10 @@
 package com.example.admin.woailiushuang.RecycleViewDemoActivity
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.os.Handler
 import android.os.Message
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +16,9 @@ import com.example.admin.woailiushuang.Data
 import com.example.admin.woailiushuang.Question
 import com.example.admin.woailiushuang.R
 import com.example.admin.woailiushuang.http.HttpUtils
+import com.example.admin.woailiushuang.image.NewGlide
+import com.example.admin.woailiushuang.image.RequestListener
+import com.example.admin.woailiushuang.image.TestActivity
 import com.example.admin.woailiushuang.kolinLauch
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -58,8 +63,20 @@ class RvAdapter : RecyclerView.Adapter<RvAdapter.MyViewHolder> {
 
         holder.exp.text = list!![position]!!.explains
 
+        val listener = object : RequestListener {
+            override fun onSuccess(bitmap: Bitmap?) {
+                Log.i(TestActivity::class.java.name.toString(), "加载图片成功")
+            }
+
+            override fun onError() {
+                Log.i(TestActivity::class.java.name.toString(), "加载图片失败")
+            }
+        }
+
         if (!list!![position]!!.url.isNullOrBlank()){
-            Glide.with(context).load(list!![position]!!.url!!).crossFade().into(holder.img)
+//            Glide.with(context).load(list!![position]!!.url!!).crossFade().into(holder.img)
+
+            NewGlide().with(context!!).Url(list!![position]!!.url!!).loadingRes(R.drawable.ic_launcher_background).setListener(listener).into(holder.img)
         }
 
     }

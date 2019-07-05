@@ -35,13 +35,11 @@ class MainActivity : AppCompatActivity() {
                 setbmpToImage(it)
             }
         })
-
-
     }
 
-    interface CallBk{
-        fun onFaliel(e:IOException)
-        fun onSuccess(list: List<Question>?)
+    abstract class CallBk{
+        abstract fun onFaliel(e:IOException)
+        abstract fun onSuccess(list: List<Question>?)
     }
 
     fun setbmpToImage(bmp :Bitmap){
@@ -61,6 +59,9 @@ class MainActivity : AppCompatActivity() {
         }
         xiecheng.setOnClickListener {
             startActivity(Intent(this, test::class.java))
+        }
+        jiazhao.setOnClickListener {
+            startActivity(Intent(this, RecycleVDemoActivity::class.java))
         }
         imageTest.setOnClickListener {
             startActivity(Intent(this, TestActivity::class.java))

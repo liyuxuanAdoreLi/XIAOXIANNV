@@ -29,16 +29,13 @@ public class BitmapDispatcher extends Thread {
         super.run();
         BitmapRequest br = null;
 
-        while (!isInterrupted()) {
+        while (!isInterrupted()) {  // 特殊情况导致中断
             try {
-                br = BrQueue.take();  //take前 ，brqueue为0时候 ，会引发中断 inInterrupted为 true
+                br = BrQueue.take();  //brqueue为0时候 阻塞
                 listener = br.getListener();
                 setloaddingImage(br);
-
                 Bitmap bitmap = getBitmap(br);
-
                 setImageView(br, bitmap);
-
             } catch (Exception e) {
                 e.printStackTrace();
             }

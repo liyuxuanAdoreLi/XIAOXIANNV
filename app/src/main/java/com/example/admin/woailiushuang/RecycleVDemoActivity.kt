@@ -7,9 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.*
-import com.bumptech.glide.Glide
+import androidx.recyclerview.widget.RecyclerView.VERTICAL
 import com.example.admin.woailiushuang.RecycleViewDemoActivity.RvAdapter
 import com.example.admin.woailiushuang.http.HttpUtils
 import kotlinx.android.synthetic.main.activity_recycle_demo.*
@@ -54,7 +52,7 @@ class RecycleVDemoActivity : AppCompatActivity() {
         adapter = RvAdapter(this, list)
         myRecycleView?.adapter = adapter
         val layoutManager = LinearLayoutManager(this@RecycleVDemoActivity)
-        layoutManager.orientation = LinearLayoutManager.VERTICAL
+        layoutManager.orientation = VERTICAL
 
         // layoutManager
         myRecycleView?.layoutManager = layoutManager
@@ -79,25 +77,25 @@ class RecycleVDemoActivity : AppCompatActivity() {
         myRecycleView?.itemAnimator = DefaultItemAnimator()
 
 
-        myRecycleView.addOnScrollListener(object : OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                super.onScrollStateChanged(recyclerView, newState)
-                when (newState) {
-                    SCROLL_STATE_IDLE -> {
-                        Log.i("RecycleView", "视图停止滑动")
-                        Glide.with(this@RecycleVDemoActivity).resumeRequests()
-                    }
-                    SCROLL_STATE_SETTLING -> {
-                        Log.i("RecycleView", "视图惯性滑动")
-                        Glide.with(this@RecycleVDemoActivity).pauseRequests()
-                    }
-                    SCROLL_STATE_DRAGGING -> {
-                        Log.i("RecycleView", "视图正在滑动")
-                        Glide.with(this@RecycleVDemoActivity).resumeRequests()
-                    }
-                }
-            }
-        });
+//        myRecycleView.addOnScrollListener(object : OnScrollListener() {
+//            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+//                super.onScrollStateChanged(recyclerView, newState)
+//                when (newState) {
+//                    SCROLL_STATE_IDLE -> {
+//                        Log.i("RecycleView", "视图停止滑动")
+//                        Glide.with(this@RecycleVDemoActivity).resumeRequests()
+//                    }
+//                    SCROLL_STATE_SETTLING -> {
+//                        Log.i("RecycleView", "视图惯性滑动")
+//                        Glide.with(this@RecycleVDemoActivity).pauseRequests()
+//                    }
+//                    SCROLL_STATE_DRAGGING -> {
+//                        Log.i("RecycleView", "视图正在滑动")
+//                        Glide.with(this@RecycleVDemoActivity).resumeRequests()
+//                    }
+//                }
+//            }
+//        });
     }
 
     fun initList() {
@@ -107,7 +105,7 @@ class RecycleVDemoActivity : AppCompatActivity() {
                 .build()
         val request = Request.Builder().url(HttpUtils.BASEURL).post(formBody).build()
 
-        HttpUtils.instnce.postResquest(request, object : MainActivity.CallBk {
+        HttpUtils.instnce.postResquest(request, object : MainActivity.CallBk (){
             override fun onFaliel(e: IOException) {
                 runOnUiThread {
                     Toast.makeText(this@RecycleVDemoActivity, "post加载失败" + e.message, Toast.LENGTH_SHORT).show()
@@ -116,17 +114,12 @@ class RecycleVDemoActivity : AppCompatActivity() {
             }
 
             override fun onSuccess(slist: List<Question>?) {
-                runBlocking {
-                    launch {
                         Log.i("slist----", slist.toString())
                         list = slist as MutableList<Question>
                         list.subList(0, 19)
                         Log.d("slist--------截取后", list.toString())
-                        adapter?.notifyDataSetChanged()
+//                        adapter?.notifyDataSetChanged()
                     }
-                }
-            }
-
         })
     }
 
