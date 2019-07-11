@@ -1,14 +1,12 @@
-package com.example.admin.woailiushuang
+package com.example.admin.woailiushuang.progress
 
-import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
 import android.widget.MediaController
 import android.widget.Toast
-import android.widget.VideoView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.admin.woailiushuang.R
 import kotlinx.android.synthetic.main.video_activity.*
-import kotlinx.android.synthetic.main.video_activity.view.*
 
 class VideoActivity : AppCompatActivity() {
 

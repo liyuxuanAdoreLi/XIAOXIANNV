@@ -3,13 +3,12 @@ package com.example.admin.woailiushuang.http
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Log
-import com.example.admin.woailiushuang.JSND
-import com.example.admin.woailiushuang.MainActivity
+import com.example.admin.woailiushuang.progress.JSND
+import com.example.admin.woailiushuang.progress.MainActivity
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import okhttp3.*
 import java.io.IOException
-import java.net.InterfaceAddress
 
 open class HttpUtils() {
 

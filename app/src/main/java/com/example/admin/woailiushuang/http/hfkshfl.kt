@@ -1,6 +1,6 @@
 package com.example.admin.woailiushuang.http
 
-import com.example.admin.woailiushuang.Question
+import com.example.admin.woailiushuang.progress.Question
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 

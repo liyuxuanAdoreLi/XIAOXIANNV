@@ -8,25 +8,25 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <application
         android:allowBackup="true"
-        android:name=".MyApplication"
+        android:name=".progress.MyApplication"
         android:icon="@mipmap/ic_launcher"
         android:label="X_BIGSIZE"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:networkSecurityConfig="@xml/netconfig"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".progress.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SecondActivity" />
-        <activity android:name=".RecycleVDemoActivity" />
-        <activity android:name=".JavaActivity" />
-        <activity android:name=".VidewDemoActivity" />
-        <activity android:name=".VideoActivity" />
+        <activity android:name=".progress.SecondActivity" />
+        <activity android:name=".progress.RecycleVDemoActivity" />
+        <activity android:name=".test.JavaActivity" />
+        <activity android:name=".progress.VidewDemoActivity" />
+        <activity android:name=".progress.VideoActivity" />
         <activity android:name=".http.TestMainHttpActivity" />
         <activity android:name=".coroutine.test" />
         <activity android:name=".image.TestActivity" />

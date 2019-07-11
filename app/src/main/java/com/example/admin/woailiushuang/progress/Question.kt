@@ -1,6 +1,4 @@
-package com.example.admin.woailiushuang
-
-import com.google.gson.JsonObject
+package com.example.admin.woailiushuang.progress
 
 data class Question (
         var id:Int?=null,

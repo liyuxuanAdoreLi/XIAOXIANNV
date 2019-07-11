@@ -1,12 +1,11 @@
-package com.example.admin.woailiushuang
+package com.example.admin.woailiushuang.progress
 
 import android.content.res.AssetFileDescriptor
 import android.media.MediaPlayer
-import android.net.Uri
 import android.os.Bundle
 import android.widget.MediaController
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.admin.woailiushuang.R
 import kotlinx.android.synthetic.main.url_video_test_layout.*
 
 class VidewDemoActivity:AppCompatActivity() {

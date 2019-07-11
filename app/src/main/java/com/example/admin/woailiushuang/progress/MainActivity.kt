@@ -1,4 +1,4 @@
-package com.example.admin.woailiushuang
+package com.example.admin.woailiushuang.progress
 
 import android.content.Context
 import android.content.Intent
@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.admin.woailiushuang.R
 import com.example.admin.woailiushuang.consts.EventConsts
 import com.example.admin.woailiushuang.consts.Subscripe
 import com.example.admin.woailiushuang.consts.ThMode
@@ -16,7 +17,6 @@ import com.example.admin.woailiushuang.http.HttpUtils
 import com.example.admin.woailiushuang.image.TestActivity
 import com.example.admin.woailiushuang.manager.EventManager
 import kotlinx.android.synthetic.main.activity_main.*
-import okhttp3.*
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import java.io.IOException

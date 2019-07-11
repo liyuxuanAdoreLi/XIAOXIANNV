@@ -1,6 +1,7 @@
-package com.example.admin.woailiushuang;
+package com.example.admin.woailiushuang.test;
 
 import android.app.Activity;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -9,6 +10,7 @@ import org.greenrobot.eventbus.EventBus;
 
 
 public class ddd {
+
 
 int i = 0;
     private  EventBus eventBus = EventBus.getDefault();

@@ -1,4 +1,4 @@
-package com.example.admin.woailiushuang
+package com.example.admin.woailiushuang.progress
 
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.VERTICAL
+import com.example.admin.woailiushuang.R
 import com.example.admin.woailiushuang.RecycleViewDemoActivity.RvAdapter
 import com.example.admin.woailiushuang.http.HttpUtils
 import kotlinx.android.synthetic.main.activity_recycle_demo.*
@@ -105,7 +106,7 @@ class RecycleVDemoActivity : AppCompatActivity() {
                 .build()
         val request = Request.Builder().url(HttpUtils.BASEURL).post(formBody).build()
 
-        HttpUtils.instnce.postResquest(request, object : MainActivity.CallBk (){
+        HttpUtils.instnce.postResquest(request, object : MainActivity.CallBk(){
             override fun onFaliel(e: IOException) {
                 runOnUiThread {
                     Toast.makeText(this@RecycleVDemoActivity, "post加载失败" + e.message, Toast.LENGTH_SHORT).show()

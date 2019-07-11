@@ -1,12 +1,9 @@
-package com.example.admin.woailiushuang
+package com.example.admin.woailiushuang.progress
 
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.admin.woailiushuang.consts.EventConsts
-import com.example.admin.woailiushuang.manager.EventManager
-import kotlinx.android.synthetic.main.activity_b.*
-import org.greenrobot.eventbus.EventBus
+import com.example.admin.woailiushuang.R
 
 @SuppressLint("Registered")
 /**

@@ -2,8 +2,6 @@ package com.example.admin.woailiushuang.RecycleViewDemoActivity
 
 import android.content.Context
 import android.graphics.Bitmap
-import android.os.Handler
-import android.os.Message
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,17 +9,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.example.admin.woailiushuang.Data
-import com.example.admin.woailiushuang.Question
+import com.example.admin.woailiushuang.progress.Question
 import com.example.admin.woailiushuang.R
-import com.example.admin.woailiushuang.http.HttpUtils
 import com.example.admin.woailiushuang.image.NewGlide
 import com.example.admin.woailiushuang.image.RequestListener
 import com.example.admin.woailiushuang.image.TestActivity
-import com.example.admin.woailiushuang.kolinLauch
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 /**
  * @desc

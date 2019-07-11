@@ -1,9 +1,8 @@
-package com.example.admin.woailiushuang
+package com.example.admin.woailiushuang.progress
 
 import android.app.Application
-import android.content.Context
+import com.example.admin.woailiushuang.R
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
-import com.scwang.smartrefresh.layout.api.*
 import com.scwang.smartrefresh.layout.footer.BallPulseFooter
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
 

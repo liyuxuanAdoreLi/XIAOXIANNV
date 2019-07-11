@@ -1,13 +1,9 @@
-package com.example.admin.woailiushuang
+package com.example.admin.woailiushuang.test
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
-
-import com.example.admin.woailiushuang.RecycleViewDemoActivity.RvAdapter
-import com.scwang.smartrefresh.layout.SmartRefreshLayout
-import com.scwang.smartrefresh.layout.api.RefreshLayout
-import com.scwang.smartrefresh.layout.listener.OnRefreshListener
+import com.example.admin.woailiushuang.R
+import com.example.admin.woailiushuang.progress.Question
 
 import java.util.ArrayList
 
