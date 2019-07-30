@@ -80,4 +80,35 @@ class ArraySolutionKotlin {
     }
 
 
+    /**
+     * 三数之和 目标值0
+     *
+     * var threeSum = function (nums) {
+            val res = []
+            nums.sort((a, b) => a - b) // 先排个队，最左边是最弱（小）的，最右边是最强(大)的
+            for (let i = 1; i < nums.length - 1; i++) { // C位人选
+                let first = 0
+                let last = nums.length - 1
+                do {
+                    let result = nums[i] + nums[first] + nums[last]
+                    if (result === 0) { // 如果可以组队
+                    res.push([nums[i], nums[first], nums[last]])
+                }
+                    if (result <= 0 && first < i) { // 实力太弱，把菜鸟那边右移一位
+                        while (nums[first] === nums[++first]); // 如果相等就跳过
+                    } else if (result > 0 && last > i) { // 实力太强，把大神那边右移一位
+                        while (nums[last] === nums[--last]);
+                    } else {
+                        break // 某一边已经没有人选了
+                    }
+                } while (1) { }
+            }
+            return res
+        } // 示意代码 未AC
+     *
+     *
+     */
+
+
+
 }

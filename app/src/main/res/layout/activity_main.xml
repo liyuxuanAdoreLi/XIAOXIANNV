@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".progress.MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+        name="userBean"
+        type="com.example.admin.woailiushuang.bean.User" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".progress.MainActivity">
 
         <LinearLayout
             android:layout_gravity="center"
@@ -13,35 +21,42 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <ImageView
                 android:id="@+id/image"
                 android:layout_width="100dp"
                 android:layout_height="100dp" />
+
             <Button
                 android:text="EventBus实例跳转"
                 android:id="@+id/toB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
             <Button
                 android:text="RecycleView实例跳转"
                 android:id="@+id/toRecycleView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
             <Button
                 android:text="移动"
                 android:id="@+id/scroll"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
             <Button
                 android:text="协程"
                 android:id="@+id/xiecheng"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
             <Button
                 android:text="驾照"
                 android:id="@+id/jiazhao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
             <Button
                 android:text="自己封装的图片框架测试"
                 android:id="@+id/imageTest"
@@ -50,9 +65,11 @@
         </LinearLayout>
 
         <TextView
-            android:text="未收到消息"
+            android:text="@{userBean.names}"
             android:id="@+id/tv"
+            tools:text="占位符名字"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

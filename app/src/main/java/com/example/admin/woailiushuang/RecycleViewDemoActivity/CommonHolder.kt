@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView
  * @auth ${user}
  * @time 2019/3/15 12:00
  */
-class CommonHolder(mContent: Context, itemView: View) : RecyclerView.ViewHolder(itemView) {
+class CommonHolder(mContent: Context, itemView: View ,parent:ViewGroup) : RecyclerView.ViewHolder(itemView) {
 //    那么对于不同的ItemType肯定没有办法确定创建哪些成员变量View，取而代之的只能是个集合来存储了
 
     var context: Context = mContent
@@ -30,7 +30,7 @@ class CommonHolder(mContent: Context, itemView: View) : RecyclerView.ViewHolder(
     fun get(context: Context, parent: ViewGroup, layoutId: Int): CommonHolder {
 
         val itemView = LayoutInflater.from(context).inflate(layoutId, parent, false)
-        return CommonHolder(context, itemView)
+        return CommonHolder(context, itemView,parent)
     }
 
 

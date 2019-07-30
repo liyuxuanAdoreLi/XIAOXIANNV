@@ -8,6 +8,8 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import com.example.admin.woailiushuang.R
 import com.example.admin.woailiushuang.consts.EventConsts
 import com.example.admin.woailiushuang.consts.Subscripe
@@ -26,7 +28,9 @@ class MainActivity : AppCompatActivity() {
     val url = "http://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1559641157130&di=3b5645543641dd1c81390df2e1c99bd9&imgtype=0&src=http%3A%2F%2Fwww.wfjianmei.com%2Fupload_files%2Ftk19822577.jpg"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        val binding = DataBindingUtil.setContentView<ViewDataBinding>(this,R.layout.activity_main)
+
         EventManager.instnce.getEventBus().register(this)
         initView()
 

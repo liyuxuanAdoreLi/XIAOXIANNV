@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:networkSecurityConfig="@xml/netconfig"
         android:theme="@style/AppTheme">
-        <activity android:name=".progress.MainActivity">
+        <activity android:name=".RecycleViewDemoActivity.TestCommonRecycleViewActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,6 +30,7 @@
         <activity android:name=".http.TestMainHttpActivity" />
         <activity android:name=".coroutine.test" />
         <activity android:name=".image.TestActivity" />
+        <activity android:name=".progress.MainActivity" />
     </application>
 
 </manifest>
